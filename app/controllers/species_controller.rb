@@ -6,11 +6,21 @@ class SpeciesController < ApplicationController
   end
 
   def create
-    @specie = Specie.create(:name => params[:names])
-    render('species/new.html.erb')
+    @specie = Specie.create(:name => params[:name])
+    if @specie.save
+      render('species/success.html.erb')
+    else
+      render('species/new.html.erb')
+    end
   end
 
   def new
     render('species/new.html.erb')
+  end
+
+   def destroy
+    @specie = Specie.find(params[:id])
+    @specie.destroy
+    render('species/destroy.html.erb')
   end
 end

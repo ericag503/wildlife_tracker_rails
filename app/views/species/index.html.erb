@@ -2,7 +2,17 @@
 
 <ul>
   <% @species.each do |specie| %>
-    <li><a href="/species/<%= specie.id %>"><%= specie.name %></a></li>
+    <li><a href="/species/<%= specie.id %>"><%= specie.name %></a>
+       <form action="/specie/<%= specie.id %>" method="post">
+        <input name="_method" type="hidden" value="patch">
+        <input name="specie[done]" type="hidden" value="true">
+        <button>Add Sighting for this Specie</button>
+        <a href="/species/<%= specie.id %>"
+      data-confirm="You sure?"
+      data-method="delete"
+      rel="nofollow">Delete</a>
+      </form>
+    </li>
   <% end %>
   <p>Would you like to <a href="/species/new">create a new one</a>?</p>
 </ul>
