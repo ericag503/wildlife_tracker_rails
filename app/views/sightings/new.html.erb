@@ -1,0 +1,26 @@
+<h1>Sightings</h1>
+
+<% if @sighting.errors.any? %>
+  <h3>Please fix these errors:</h3>
+  <ul>
+    <% @sighting.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<form action="/sightings" method="post">
+  <label for="date">Date</label>
+  <input id="date" name="sighting[date]" type="date" value="<%= @sighting.date %>">
+  <label for="lat">Latitude</label>
+  <input id="lat" name="sighting[latitude]" type="text" value="<%= @sighting.latitude %>">
+  <label for="long">Longitude</label>
+  <input id="long" name="sighting[longitude]" type="text" value="<%= @sighting.longitude %>">
+  <label for="spec_id">Specie ID</label>
+  <input id="spec_id" name="sighting[specie_id]" type="text" value="<%= @sighting.specie_id %>">
+  <button>Create Sighting</button>
+</form>
+  <p>Would you like to <a href="/sightings/new">create a new one</a>?</p>
+  <p><a href="/species">Return to species listing</a></p>
+</ul>
