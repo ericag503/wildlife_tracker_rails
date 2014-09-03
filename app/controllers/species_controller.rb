@@ -1,4 +1,4 @@
-class TasksController < ApplicationController
+class SpeciesController < ApplicationController
 
   def index
     @species = Specie.all
@@ -7,6 +7,10 @@ class TasksController < ApplicationController
 
   def create
     @specie = Specie.create(:name => params[:names])
+    render('species/new.html.erb')
+  end
+
+  def new
     render('species/new.html.erb')
   end
 end
